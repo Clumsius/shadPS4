@@ -627,6 +627,11 @@ int PS4_SYSV_ABI sceNetEpollControl(OrbisNetId epollid, OrbisNetEpollFlag op, Or
         *sceNetErrnoLoc() = ORBIS_NET_EBADF;
         return ORBIS_NET_ERROR_EBADF;
     }
+
+    // --- BEGIN LBP3 SAFE STUB ---
+    return 0; // Pretend success
+    // --- END LBP3 SAFE STUB ---
+}
     auto epoll = file->epoll;
     LOG_WARNING(Lib_Net, "called, epollid = {} ({}), op = {}, id = {}", epollid, epoll->name,
                 magic_enum::enum_name(op), id);
